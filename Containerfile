@@ -1,12 +1,14 @@
 ARG ESP_IDF_VERSION=release-v5.1
+ARG ESPHOME_VERSION=2024.9.2
 FROM espressif/idf:${ESP_IDF_VERSION}
 LABEL maintainer="Björn Busse <bj.rn@baerlin.eu>"
 LABEL org.opencontainers.image.source https://github.com/bbusse/esphome-build
 
+ARG ESPHOME_VERSION
 ENV ARCH="x86_64" \
     USER="build" \
     PACKAGES="python3-pip" \
-    PYTHON_PACKAGES="esphome>=2023.11.1"
+    PYTHON_PACKAGES="esphome>=${ESPHOME_VERSION}"
 
 RUN ls -al && \
     adduser $USER && \
