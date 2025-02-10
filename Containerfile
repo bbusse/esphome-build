@@ -1,13 +1,12 @@
-ARG ESP_IDF_VERSION=release-v5.1
 ARG ESPHOME_VERSION=2024.9.2
-FROM espressif/idf:${ESP_IDF_VERSION}
+FROM bitnami/minideb:latest
 LABEL maintainer="Björn Busse <bj.rn@baerlin.eu>"
 LABEL org.opencontainers.image.source https://github.com/bbusse/esphome-build
 
 ARG ESPHOME_VERSION
 ENV ARCH="x86_64" \
     USER="build" \
-    PACKAGES="python3-pip" \
+    PACKAGES="curl python3-pip python3-launchpadlib" \
     PYTHON_PACKAGES="esphome>=${ESPHOME_VERSION}"
 
 RUN ls -al && \
@@ -18,8 +17,8 @@ RUN ls -al && \
     apt install -y software-properties-common && \
     # We want a more recent python from the ppa we added
     add-apt-repository ppa:deadsnakes/ppa && \
-    apt install -y python3.11 python3.11-venv && \
-    python3.11 -m ensurepip
+    apt install -y python3.11 python3.11-venv
+    #python3.11 -m ensurepip
 
 USER $USER
 
