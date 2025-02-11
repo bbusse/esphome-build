@@ -1,4 +1,4 @@
-ARG ESPHOME_VERSION=2024.9.2
+ARG ESPHOME_VERSION=2024.12.4
 FROM bitnami/minideb:latest
 LABEL maintainer="Björn Busse <bj.rn@baerlin.eu>"
 LABEL org.opencontainers.image.source https://github.com/bbusse/esphome-build
