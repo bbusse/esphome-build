@@ -17,7 +17,7 @@ RUN ls -al && \
     apt install -y software-properties-common && \
     # We want a more recent python from the ppa we added
     add-apt-repository ppa:deadsnakes/ppa && \
-    apt install -y python3.11 python3.11-venv
+    apt install -y git python3.11 python3.11-venv
     #python3.11 -m ensurepip
 
 USER $USER
